@@ -32,3 +32,10 @@ Tahap 1 sedang dikerjakan.
 - npm run build lulus; masih ada peringatan metadata browser lama dari tooling yang sudah ada.
 - php artisan test: 25 lulus, 61 assertions, SQLite :memory: sesuai phpunit.xml.
 - Halaman lama belum dimigrasikan; pemeriksaan visual lengkap dilakukan sesudah tahap 4.
+
+## Tahap 2 selesai
+- Dashboard, indeks dan detail kantong memakai kartu bertab dan komponen transaksi bersama.
+- Count-up visual, reveal maksimal delapan item bergelombang, hover tab/ikon, pencarian kantong tanpa menghilangkan fallback server.
+- Tidak ada target kantong dalam model: tidak menampilkan target atau persen rekaan; progres dipakai untuk pembayaran/data laporan yang memiliki pembagi nyata.
+- Pint lulus, build lulus, test sebelumnya 25 lulus; test UI tambahan 2 lulus (14 assertions), mencakup empty state, escaping nama, saldo negatif besar.
+- Berikutnya: transaksi, tagihan, kalkulator bulk dan efek peristiwa yang dikonfirmasi server.

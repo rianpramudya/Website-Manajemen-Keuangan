@@ -9,7 +9,16 @@ import Alpine from 'alpinejs';
 import { initializeForms } from './ui/forms';
 import { initializeDialogs } from './ui/dialogs';
 
+import { initializeCountUp } from './ui/count-up';
+import { initializeReveal } from './ui/reveal';
+import { initializeProgress } from './ui/progress';
+import { initializePocketSearch } from './ui/pockets';
+
 window.Alpine = Alpine;
 Alpine.start();
 initializeForms();
 initializeDialogs();
+initializeCountUp();
+initializeReveal();
+initializeProgress();
+initializePocketSearch();
