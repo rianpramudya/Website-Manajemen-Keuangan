@@ -194,8 +194,6 @@
     .toast-success { @apply border-success; }
     .toast-error { @apply border-danger; }
     .empty { @apply text-center py-10 space-y-3; }
-    .skeleton { @apply rounded-control bg-border overflow-hidden; height: var(--space-6); }
-    .skeleton::after { content: ''; display: block; height: 100%; background: var(--color-surface); opacity: .5; animation: shimmer var(--dur-moment) var(--ease-out); }
     .progress-track { @apply w-full rounded-full overflow-hidden bg-border; height: var(--chart-height); }
     .progress-fill { height: 100%; fill: var(--pocket-strong, var(--color-primary)); transform-origin: left; }
     .transaction-row { @apply relative flex flex-col sm:flex-row sm:items-center justify-between gap-4 py-4 border-b border-border; min-width: 0; }
@@ -238,7 +236,6 @@
 @keyframes modal-in { from { opacity: 0; transform: translateY(var(--modal-distance)); } to { opacity: 1; transform: none; } }
 @keyframes modal-out { to { opacity: 0; transform: translateY(var(--modal-distance)); } }
 @keyframes toast-in { from { opacity: 0; transform: translateY(var(--space-4)); } to { opacity: 1; transform: none; } }
-@keyframes shimmer { from { transform: translateX(-100%); } to { transform: translateX(100%); } }
 @keyframes highlight-out { to { opacity: 0; } }
 @keyframes check-in { from { stroke-dashoffset: var(--stroke-length); } to { stroke-dashoffset: 0; } }
 @keyframes stamp-in { from { opacity: 0; transform: scale(var(--stamp-scale)) rotate(calc(-1 * var(--icon-tilt))); } to { opacity: 1; transform: none; } }

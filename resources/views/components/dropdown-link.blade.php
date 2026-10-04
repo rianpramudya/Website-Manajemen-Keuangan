@@ -1,1 +1,0 @@
-<a {{ $attributes->class(["nav-link"]) }}>{{ $slot }}</a>
