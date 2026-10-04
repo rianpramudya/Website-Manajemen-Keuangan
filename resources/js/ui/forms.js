@@ -11,6 +11,12 @@ export function initializeForms() {
     document.querySelectorAll('form').forEach(form => {
         form.addEventListener('submit', event => {
             if (event.defaultPrevented) return;
+            if (form.method.toLowerCase() === 'post' && !document.getElementById('dompet-form-navigation')) {
+                const fallback = document.createElement('style');
+                fallback.id = 'dompet-form-navigation';
+                fallback.textContent = '@view-transition { navigation: none; }';
+                document.head.append(fallback);
+            }
             try {
                 const dialog = form.closest('dialog');
                 if (dialog) sessionStorage.setItem('dompet-form-dialog', dialog.id);

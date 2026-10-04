@@ -4,7 +4,7 @@ import '@fontsource/plus-jakarta-sans/latin-500.css';
 import '@fontsource/plus-jakarta-sans/latin-600.css';
 import '@fontsource/plus-jakarta-sans/latin-700.css';
 import '@fontsource/plus-jakarta-sans/latin-800.css';
-import '@phosphor-icons/web/regular';
+import '../css/phosphor.css';
 import Alpine from 'alpinejs';
 import { initializeForms } from './ui/forms';
 import { initializeDialogs } from './ui/dialogs';

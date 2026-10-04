@@ -8,6 +8,6 @@
         <label class="btn btn-secondary"><input id="remember_me" type="checkbox" name="remember"> Ingat saya</label>
         <x-button type="submit" class="w-full" icon="sign-in">Masuk</x-button>
         @if(Route::has('password.request'))<x-button variant="tertiary" :href="route('password.request')">Lupa kata sandi?</x-button>@endif
-        <p class="muted">Belum punya akun? <a class="text-primary font-bold" href="{{ route('register') }}">Daftar</a></p>
+        <p class="muted">Belum punya akun? <x-button variant="tertiary" :href="route('register')">Daftar</x-button></p>
     </form>
 </x-guest-layout>

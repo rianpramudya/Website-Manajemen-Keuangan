@@ -1,0 +1,10 @@
+{
+  "dashboard": {
+    "performance": 87,
+    "accessibility": 100
+  },
+  "landing": {
+    "performance": 91,
+    "accessibility": 100
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "passed": [
+    {
+      "width": 320,
+      "chart_height_passed": true
+    },
+    {
+      "width": 390,
+      "chart_height_passed": true
+    },
+    {
+      "width": 768,
+      "chart_height_passed": true
+    },
+    {
+      "width": 1024,
+      "chart_height_passed": true
+    },
+    {
+      "width": 1440,
+      "chart_height_passed": true
+    }
+  ],
+  "errors": []
+}

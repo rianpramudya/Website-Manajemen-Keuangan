@@ -273,6 +273,8 @@ Keputusan fun modern tahap 2: carousel snap hanya di mobile, grid kantong di tab
 
 Keputusan fun modern tahap 3: View Transitions lintas dokumen memakai nama kantong unik dan indikator navigasi bersama; browser tanpa API tetap memakai navigasi/form normal. Tab detail pada desktop menunjukkan kedua panel, mobile berganti dengan keyboard dan crossfade. Toast berhenti saat hover/fokus, bottom sheet mendukung tarik serta tombol/Escape.
 
+Keputusan fun modern tahap 4: ilustrasi SVG satu keluarga (kantong kosong, kantong penuh, koin); konfeti dibatasi 16 partikel sentuh / 24 desktop dan hanya setelah respons sukses transaksi pertama atau seluruh tagihan bulanan lunas. Status terlambat/error/hapus tidak memakai pegas. Tabel transaksi menggunakan satu markup untuk tabel desktop dan kartu mobile. Chart SVG 220px mobile / 280px desktop memiliki legenda lengkap dan nominal final. View Transitions digunakan untuk GET/filter; POST memakai navigasi normal agar redirect server tidak menolak opt-in. VisualViewport mengangkat sheet dan bar aksi saat keyboard mengurangi area layar; viewport-fit dan safe area diaktifkan. CSS Phosphor dihasilkan dari ikon yang dipakai saat build; Tailwind memindai sumber Blade, bukan cache compiled view. Tidak ada dependency runtime baru.
+
 ## 12. Fun modern pass
 
 Bagian ini menimpa aturan lama yang bertentangan.

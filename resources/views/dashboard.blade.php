@@ -14,7 +14,7 @@
     </section>
     <div class="dashboard-activity">
         <section class="panel stack dashboard-recent" data-reveal><div class="page-header"><h2>Transaksi terbaru</h2><x-button variant="tertiary" :href="route('transactions.history')">Lihat riwayat</x-button></div><x-transaction-list :transactions="$transactions" /></section>
-        <section id="create-transaction" class="panel stack dashboard-form" data-reveal><h2>Tambah transaksi</h2><p class="muted">Uang masuk atau keluar, catat selagi ingat.</p><x-transaction-form :categories="$categories" /></section>
+        <section id="create-transaction" class="panel stack dashboard-form" data-reveal><h2>Tambah transaksi</h2><p class="muted">Uang masuk atau keluar, catat selagi ingat.</p><x-transaction-form :categories="$categories" :first="$transactions->isEmpty()" /></section>
     </div>
 </div>
 @include('components.modals.create-category')

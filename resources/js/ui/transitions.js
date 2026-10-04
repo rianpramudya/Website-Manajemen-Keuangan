@@ -3,7 +3,10 @@ export function transitionUpdate(update, container) {
     if (document.startViewTransition) {
         document.documentElement.classList.add('filter-transition');
         const transition = document.startViewTransition(update);
-        transition.finished.finally(() => document.documentElement.classList.remove('filter-transition'));
+        const cleanup = () => document.documentElement.classList.remove('filter-transition');
+        transition.ready.catch(() => {});
+        transition.updateCallbackDone.catch(() => {});
+        transition.finished.then(cleanup, cleanup);
     } else { update(); container?.classList.remove('content-crossfade'); if (container) { container.getBoundingClientRect(); container.classList.add('content-crossfade'); } }
 }
 export function initializeTransitions() {
@@ -12,6 +15,12 @@ export function initializeTransitions() {
         card.style.viewTransitionName = `pocket-${card.dataset.pocketId}`;
     });
     namePockets();
-    window.addEventListener('pagereveal', namePockets);
-    window.addEventListener('pageswap', namePockets);
+    const handle = event => {
+        namePockets();
+        event.viewTransition?.ready.catch(() => {});
+        event.viewTransition?.updateCallbackDone.catch(() => {});
+        event.viewTransition?.finished.catch(() => {});
+    };
+    window.addEventListener('pagereveal', handle);
+    window.addEventListener('pageswap', handle);
 }

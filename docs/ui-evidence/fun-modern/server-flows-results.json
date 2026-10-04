@@ -1,0 +1,10 @@
+{
+  "passed": [
+    "submit disabled + final amount payload",
+    "first transaction confetti only after server success, <=16",
+    "toast timer pauses on hover",
+    "server validation retains value and no celebration",
+    "monthly bills all paid celebration after server confirmation"
+  ],
+  "errors": []
+}

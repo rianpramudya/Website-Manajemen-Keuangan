@@ -1,3 +1,3 @@
 @foreach(['dashboard' => ['Dashboard', 'squares-four'], 'categories.index' => ['Kantong', 'wallet'], 'transactions.history' => ['Transaksi', 'arrows-down-up'], 'bills.index' => ['Tagihan', 'receipt'], 'reports.index' => ['Laporan', 'chart-bar']] as $route => [$label, $icon])
-<a class="nav-link" href="{{ route($route) }}" @if(request()->routeIs($route) || ($route === 'categories.index' && request()->routeIs('categories.show'))) aria-current="page" @endif><x-icon :name="$icon" /><span>{{ $label }}</span></a>
+<a class="nav-link" href="{{ route($route) }}" @if(request()->routeIs($route) || ($route === 'categories.index' && request()->routeIs('categories.show'))) aria-current="page" @endif><x-navigation-icon :name="$icon" :active="request()->routeIs($route) || ($route === 'categories.index' && request()->routeIs('categories.show'))" /><span>{{ $label }}</span></a>
 @endforeach

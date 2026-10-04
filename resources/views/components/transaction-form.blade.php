@@ -1,5 +1,5 @@
-@props(['categories' => null, 'category' => null, 'type' => null, 'prefix' => 'transaction'])
-<form action="{{ route('transactions.store') }}" method="POST" class="stack" data-finance-event="transaction">
+@props(['categories' => null, 'category' => null, 'type' => null, 'prefix' => 'transaction', 'first' => false])
+<form action="{{ route('transactions.store') }}" method="POST" class="stack" data-finance-event="transaction" data-first-transaction="{{ $first ? 'true' : 'false' }}">
     @csrf
     @if($type)<input type="hidden" name="type" value="{{ $type }}">@else
     <fieldset><legend class="field-label">Tipe transaksi</legend><div class="actions"><label class="btn btn-secondary"><input type="radio" name="type" value="expense" @checked(old('type', 'expense') === 'expense')> Pengeluaran</label><label class="btn btn-secondary"><input type="radio" name="type" value="income" @checked(old('type') === 'income')> Pemasukan</label></div><x-input-error :messages="$errors->get('type')" /></fieldset>

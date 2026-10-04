@@ -1,0 +1,227 @@
+[
+  {
+    "page": "dashboard",
+    "width": 320,
+    "overflow": false
+  },
+  {
+    "page": "kantong",
+    "width": 320,
+    "overflow": false
+  },
+  {
+    "page": "transaksi",
+    "width": 320,
+    "overflow": false
+  },
+  {
+    "page": "tagihan",
+    "width": 320,
+    "overflow": false
+  },
+  {
+    "page": "laporan",
+    "width": 320,
+    "overflow": false
+  },
+  {
+    "page": "landing",
+    "width": 320,
+    "overflow": false
+  },
+  {
+    "page": "auth",
+    "width": 320,
+    "overflow": false
+  },
+  {
+    "page": "profil",
+    "width": 320,
+    "overflow": false
+  },
+  {
+    "page": "detail",
+    "width": 320,
+    "overflow": false
+  },
+  {
+    "page": "dashboard",
+    "width": 390,
+    "overflow": false
+  },
+  {
+    "page": "kantong",
+    "width": 390,
+    "overflow": false
+  },
+  {
+    "page": "transaksi",
+    "width": 390,
+    "overflow": false
+  },
+  {
+    "page": "tagihan",
+    "width": 390,
+    "overflow": false
+  },
+  {
+    "page": "laporan",
+    "width": 390,
+    "overflow": false
+  },
+  {
+    "page": "landing",
+    "width": 390,
+    "overflow": false
+  },
+  {
+    "page": "auth",
+    "width": 390,
+    "overflow": false
+  },
+  {
+    "page": "profil",
+    "width": 390,
+    "overflow": false
+  },
+  {
+    "page": "detail",
+    "width": 390,
+    "overflow": false
+  },
+  {
+    "page": "dashboard",
+    "width": 768,
+    "overflow": false
+  },
+  {
+    "page": "kantong",
+    "width": 768,
+    "overflow": false
+  },
+  {
+    "page": "transaksi",
+    "width": 768,
+    "overflow": false
+  },
+  {
+    "page": "tagihan",
+    "width": 768,
+    "overflow": false
+  },
+  {
+    "page": "laporan",
+    "width": 768,
+    "overflow": false
+  },
+  {
+    "page": "landing",
+    "width": 768,
+    "overflow": false
+  },
+  {
+    "page": "auth",
+    "width": 768,
+    "overflow": false
+  },
+  {
+    "page": "profil",
+    "width": 768,
+    "overflow": false
+  },
+  {
+    "page": "detail",
+    "width": 768,
+    "overflow": false
+  },
+  {
+    "page": "dashboard",
+    "width": 1024,
+    "overflow": false
+  },
+  {
+    "page": "kantong",
+    "width": 1024,
+    "overflow": false
+  },
+  {
+    "page": "transaksi",
+    "width": 1024,
+    "overflow": false
+  },
+  {
+    "page": "tagihan",
+    "width": 1024,
+    "overflow": false
+  },
+  {
+    "page": "laporan",
+    "width": 1024,
+    "overflow": false
+  },
+  {
+    "page": "landing",
+    "width": 1024,
+    "overflow": false
+  },
+  {
+    "page": "auth",
+    "width": 1024,
+    "overflow": false
+  },
+  {
+    "page": "profil",
+    "width": 1024,
+    "overflow": false
+  },
+  {
+    "page": "detail",
+    "width": 1024,
+    "overflow": false
+  },
+  {
+    "page": "dashboard",
+    "width": 1440,
+    "overflow": false
+  },
+  {
+    "page": "kantong",
+    "width": 1440,
+    "overflow": false
+  },
+  {
+    "page": "transaksi",
+    "width": 1440,
+    "overflow": false
+  },
+  {
+    "page": "tagihan",
+    "width": 1440,
+    "overflow": false
+  },
+  {
+    "page": "laporan",
+    "width": 1440,
+    "overflow": false
+  },
+  {
+    "page": "landing",
+    "width": 1440,
+    "overflow": false
+  },
+  {
+    "page": "auth",
+    "width": 1440,
+    "overflow": false
+  },
+  {
+    "page": "profil",
+    "width": 1440,
+    "overflow": false
+  },
+  {
+    "page": "detail",
+    "width": 1440,
+    "overflow": false
+  }
+]

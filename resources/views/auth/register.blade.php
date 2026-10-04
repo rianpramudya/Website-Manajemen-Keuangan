@@ -5,6 +5,6 @@
         <x-field name="email" label="Email" type="email" required autocomplete="username" />
         <x-field name="password" label="Kata sandi" type="password" required autocomplete="new-password" />
         <x-field name="password_confirmation" label="Ulangi kata sandi" type="password" required autocomplete="new-password" />
-        <x-button type="submit" class="w-full">Daftar</x-button><p class="muted">Sudah punya akun? <a class="text-primary font-bold" href="{{ route('login') }}">Masuk</a></p>
+        <x-button type="submit" class="w-full">Daftar</x-button><p class="muted">Sudah punya akun? <x-button variant="tertiary" :href="route('login')">Masuk</x-button></p>
     </form>
 </x-guest-layout>

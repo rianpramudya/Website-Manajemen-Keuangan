@@ -3,10 +3,16 @@ export function initializeDialogs() {
     const triggers = new WeakMap();
     const close = dialog => {
         if (!dialog || !dialog.open || dialog.classList.contains('is-closing')) return;
-        const finish = () => { dialog.close(); dialog.classList.remove('is-closing'); triggers.get(dialog)?.focus(); };
+        let completed = false, timeout;
+        const finish = () => {
+            if (completed) return;
+            completed = true; clearTimeout(timeout);
+            dialog.close(); dialog.classList.remove('is-closing'); triggers.get(dialog)?.focus();
+        };
         if (matchMedia('(prefers-reduced-motion: reduce)').matches) { finish(); return; }
         dialog.classList.add('is-closing');
         dialog.addEventListener('animationend', finish, { once: true });
+        timeout = setTimeout(finish, parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--dur-fast')));
     };
     document.addEventListener('click', event => {
         const opener = event.target.closest('[data-open-dialog]');

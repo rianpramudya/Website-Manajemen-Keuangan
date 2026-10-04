@@ -4,7 +4,7 @@
     $paidBills = $bills->where('status', 'paid');
     $bulkRows = $unpaidBills->map(fn ($bill) => ['id' => $bill->id, 'name' => $bill->name, 'original_total' => $bill->remaining_amount, 'pay_amount' => $bill->remaining_amount, 'percent' => 100, 'selected' => false])->values();
 @endphp
-<div class="page">
+<div class="page" data-monthly-unpaid="{{ $unpaidBills->where('frequency', 'monthly')->count() }}" data-monthly-paid="{{ $paidBills->where('frequency', 'monthly')->count() }}">
     <header class="page-header" data-reveal><div><h1>Tagihan tertata, pikiran lega</h1><p class="muted mt-2">Kelola kewajiban dan catat pembayaranmu.</p></div><x-action-bar><x-button data-open-dialog="createBillModal" icon="plus">Tambah tagihan</x-button></x-action-bar></header>
     <section class="pocket summary-panel" data-palette="yellow" data-reveal><span class="pocket-tab" aria-hidden="true"></span><div class="page-header"><div class="stack"><h2>Saldo bersih tersedia</h2><x-money :value="$currentBalance" class="balance block" :count="true" /><p class="muted">Saldo dari kantong tabungan.</p></div><x-button variant="secondary" data-open-dialog="addFundsModal" icon="plus">Tambah saldo</x-button></div></section>
     <section class="stack" aria-labelledby="active-bills-title"><div class="page-header"><h2 id="active-bills-title">Tagihan aktif</h2><div><x-input-label for="bill-filter" value="Frekuensi tagihan" /><select class="field" id="bill-filter" data-bill-filter><option value="all">Semua</option><option value="monthly">Bulanan</option><option value="weekly">Mingguan</option><option value="one_time">Sekali</option></select></div></div>
@@ -32,7 +32,7 @@
             <x-field name="date" id="bulk-date" label="Tanggal pembayaran" type="date" :value="date('Y-m-d')" x-model="paymentDate" required />
             <label class="btn btn-secondary" data-js-control><input type="checkbox" @change="toggleAll($event)"> Pilih semua</label>
             @foreach($unpaidBills->values() as $index => $bill)
-            <div class="bulk-row">
+            <div class="bulk-row" data-frequency="{{ $bill->frequency }}">
                 <div><label class="field-label flex gap-3 items-start"><input type="checkbox" name="payments[{{ $index }}][selected]" value="1" x-model="rows[{{ $index }}].selected">{{ $bill->name }}</label><input type="hidden" name="payments[{{ $index }}][bill_id]" value="{{ $bill->id }}"><p class="muted">Sisa awal: <x-money :value="$bill->remaining_amount" /></p></div>
                 <div class="grid sm:grid-cols-2 gap-4"><x-money-input :name="'payments['.$index.'][amount]'" :id="'bulk-amount-'.$bill->id" label="Nominal pembayaran" :value="$bill->remaining_amount" x-bind:value="formatNumber(rows[{{ $index }}].pay_amount)" x-on:input="rows[{{ $index }}].pay_amount = Number($event.target.value.replaceAll('.', '').replace(',', '.')); updatePercentFromAmount(rows[{{ $index }}])" /><div data-js-control><x-input-label :for="'bulk-percent-'.$bill->id" value="Persentase pembayaran" /><input class="field" id="bulk-percent-{{ $bill->id }}" type="number" min="0" step="0.1" x-model.number="rows[{{ $index }}].percent" @input="updateAmountFromPercent(rows[{{ $index }}])"></div></div>
                 <div data-js-control><p class="muted">Perkiraan sisa</p><p class="font-bold money" x-text="'Rp ' + formatNumber(calculateRemaining(rows[{{ $index }}]))"></p><p class="muted" x-text="'Perkiraan: ' + getStatusText(rows[{{ $index }}])"></p></div>
@@ -50,7 +50,7 @@
 <x-dialog :id="'deleteBill'.$bill->id" title="Hapus tagihan?"><p class="mb-6">Tagihan {{ $bill->name }} akan dihapus dari daftar.</p><form action="{{ route('bills.destroy', $bill) }}" method="POST" class="actions" data-finance-event="delete-bill" data-bill-id="{{ $bill->id }}">@csrf @method('DELETE')<x-button variant="secondary" data-close-dialog>Batal</x-button><x-button type="submit" variant="danger">Hapus tagihan</x-button></form></x-dialog>
 @if($bill->status !== 'paid')
 <x-dialog :id="'payBill'.$bill->id" :title="'Bayar tagihan: '.$bill->name">
-    <form action="{{ route('bills.pay', $bill) }}" method="POST" class="stack" data-finance-event="pay" data-bill-id="{{ $bill->id }}">
+    <form action="{{ route('bills.pay', $bill) }}" method="POST" class="stack" data-finance-event="pay" data-bill-id="{{ $bill->id }}" data-monthly="{{ $bill->frequency === 'monthly' ? 'true' : 'false' }}">
         @csrf
         <x-money-input :id="'pay-amount-'.$bill->id" :value="$bill->remaining_amount" required />
         <x-field name="date" :id="'pay-date-'.$bill->id" label="Tanggal pembayaran" type="date" :value="date('Y-m-d')" required />

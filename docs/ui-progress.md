@@ -1,6 +1,6 @@
-# Progres migrasi UI
+# Progres UI Dompet Rantau
 
-Branch: ui/design-system-migration. Baseline pengguna: composer.lock dan config/database.php sudah berubah; keduanya tidak diedit atau dimasukkan commit UI. AGENTS.md dan design.md dibaca lengkap.
+Branch aktif: ui/fun-modern-pass. Fondasi: ui/design-system-migration (719c8c4). Baseline pengguna: composer.lock dan config/database.php sudah berubah; keduanya tidak diedit atau dimasukkan commit UI. AGENTS.md dan design.md dibaca lengkap.
 
 ## Brief
 1. Token fuchsia dan delapan warna kantong di CSS/Tailwind.
@@ -9,7 +9,7 @@ Branch: ui/design-system-migration. Baseline pengguna: composer.lock dan config/
 4. Navigasi bersama pada app, guest, landing.
 5. Dashboard dan kantong memakai konten server, reveal, count-up visual.
 6. Transaksi dan tagihan mempertahankan endpoint, input, dan kalkulator bulk.
-7. Laporan memakai bar chart HTML yang tetap terbaca tanpa JS.
+7. Laporan memakai bar chart SVG dan legenda yang tetap terbaca tanpa JS.
 8. PDF memakai stylesheet lokal khusus renderer tanpa motion/CDN.
 9. Auth dan profil mempertahankan kontrak Breeze.
 10. Tidak memakai library animasi.
@@ -23,7 +23,7 @@ Branch: ui/design-system-migration. Baseline pengguna: composer.lock dan config/
 - Pint dibatasi ke file UI/test agar perubahan config milik pengguna tidak diformat.
 
 ## Status
-Tahap 1 sedang dikerjakan.
+Migrasi fondasi dan seluruh empat tahap fun modern selesai. Tidak ada push.
 
 ## Tahap 1 selesai
 - Token, komponen dasar, font/ikon lokal, navigasi bersama app/guest, form loading dan modal native dibuat.
@@ -55,7 +55,7 @@ Tahap 1 sedang dikerjakan.
 - PDF sintetis: empat halaman, tabel dan teks dalam batas halaman. Artefak tersedia di /tmp/dompet-ui-artifacts.
 - Perubahan composer.lock dan config/database.php milik pengguna tidak disertakan. Tidak ada push.
 
-## Fun modern pass — mulai
+## Fun modern pass
 - Instruksi terbaru Bagian 12–13 mengungguli fondasi lama. Baseline migrasi disimpan sebelum branch upgrade.
 
 ### Upgrade tahap 1 — selesai
@@ -75,3 +75,16 @@ Tahap 1 sedang dikerjakan.
 - Tab Riwayat/Info punya keyboard panah dan fallback tanpa JS; filter crossfade; bottom sheet dapat ditarik dengan alternatif tutup/Escape. Toast pegas, timebar berhenti saat hover/fokus; VisualViewport menghindari keyboard.
 - Build/Pint bersih; 30 test / 88 assertion lulus; 45 screenshot tanpa overflow; delapan kelompok interaksi/fallback lulus tanpa error JS.
 - Lighthouse awal Dashboard mobile: Performance 98, Accessibility 95. Temuan kontras akan dipoles di tahap 4. Tidak ada dependency runtime baru.
+
+### Upgrade tahap 4 — selesai
+- Ilustrasi SVG bersama, empty state ramah, konfeti tonggak sesudah sukses server, tabel desktop/kartu mobile dengan markup tunggal. Chart SVG 220/280px dan legenda lengkap; status bahaya/terlambat tetap serius.
+- Target sentuh checkbox tagihan 44px, jarak bottom tab 8px, safe area, modal dengan fallback penutupan; VisualViewport mengangkat aksi saat area layar berkurang. Auth, profil dan landing dipoles dengan aksi identik pada semua perangkat.
+- View Transitions GET/shared element teruji; submit POST menonaktifkan opt-in sebelum navigasi agar redirect server tetap normal. Tanpa JS, reduced-motion, tanpa API transisi tetap berfungsi.
+- Optimasi produksi: CSS Phosphor hanya 37 ikon terpakai (~3KB); Tailwind memindai sumber, bukan cache view. CSS utama ~55KB dari ~74KB. Generator memakai Node bawaan, tidak ada dependency baru atau library animasi.
+- Lighthouse cache dingin produksi: Dashboard Performance 87 / Accessibility 100; Landing 91 / 100. Audit produksi awal Dashboard 83 meningkat setelah optimasi. Skor dev tahap sebelumnya bukan hasil penerimaan akhir.
+- Pint bersih (file perubahan pengguna dikecualikan), build berhasil, 30 test / 88 assertion lulus. Warning metadata browser bawaan build masih ada.
+- Screenshot final 45 pada lima lebar, 36 pada empat emulasi perangkat, 61 auth/empty/fallback/landscape; tanpa overflow/error. Paritas sembilan halaman lulus. Delapan kelompok interaksi serta lima alur server nyata lulus. Nominal besar/negatif dan nama panjang menggunakan fixture sintetis.
+- 13 pemeriksaan kontras lulus; gradien putih minimum 6,32:1, putih opacity 0,85 minimum 4,93:1. PDF sintetis empat halaman tidak terpotong.
+- Bukti pilihan dan JSON: docs/ui-evidence/fun-modern. Matriks lengkap: /tmp/dompet-fun-artifacts. Tidak menyimpan cookie atau data pengguna.
+- Batas: emulasi Chromium, belum perangkat fisik/Safari/Firefox. Keyboard virtual hanya simulasi VisualViewport 400px. Pemeriksaan perangkat fisik adalah tindak lanjut manual, tidak ada keputusan desain tertunda.
+- composer.lock dan config/database.php milik pengguna tetap di luar commit. .env, logika bisnis, rute, migrasi, dan database aplikasi tidak diubah; tidak ada push.
