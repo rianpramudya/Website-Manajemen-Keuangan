@@ -101,6 +101,10 @@
     --keyboard-offset: 0px;
     --summary-gradient: linear-gradient(125deg, var(--color-primary), var(--color-violet-deep));
     --shine-color: rgb(255 255 255 / .24);
+    --tilt-limit: 4;
+    --tilt-parallax: 2px;
+    --pocket-press-scale: .98;
+    --digit-line: 1.2em;
     --pdf-row-budget: 36;
     --pdf-category-columns: 18;
     --pdf-description-columns: 32;
@@ -302,3 +306,53 @@
 }
 @media (prefers-reduced-motion: reduce) { .badge { transform: none; } }
 .page-header:has(> .action-bar) { animation: none; transform: none; }
+
+.dashboard-overview { display: grid; gap: var(--space-6); }
+.dashboard-stats { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-3); }
+.dashboard-stats .panel { padding: var(--space-4); }
+.dashboard-stats .money { font-size: 1.125rem; }
+.dashboard-stats .badge { font-size: .625rem; padding: var(--space-2); }
+.pocket-carousel { display: grid; grid-auto-flow: column; grid-auto-columns: 86%; gap: var(--space-4); overflow-x: auto; padding: var(--space-5) var(--space-1) var(--space-4); scroll-snap-type: x mandatory; scroll-padding-inline: var(--space-1); overscroll-behavior-x: contain; }
+.pocket-carousel > .pocket { scroll-snap-align: start; margin-top: 0; }
+.pocket-carousel > .empty { grid-column: 1 / -1; }
+.dashboard-activity { display: grid; gap: var(--space-6); align-items: start; }
+.dashboard-recent { order: 1; }
+.dashboard-form { order: 2; scroll-margin-top: var(--space-6); }
+.transaction-row { display: grid; grid-template-columns: minmax(0, 1fr); gap: var(--space-3); }
+.transaction-row > div:first-child { flex-wrap: wrap; }
+.transaction-row > div:last-child { text-align: left; }
+.transaction-row > div:first-child > div { flex-basis: 100%; }
+.btn { position: relative; overflow: hidden; transition: transform var(--dur-spring) var(--ease-spring-real); }
+.btn-danger { transition: none; }
+.odometer-running > .money-prefix, .odometer-running > .money-digits { opacity: 0; }
+.odometer-overlay { position: absolute; inset: 0; pointer-events: none; user-select: none; }
+.odometer-digit { display: inline-flex; width: .68em; height: var(--digit-line); overflow: hidden; vertical-align: bottom; }
+.odometer-strip { display: flex; flex-direction: column; line-height: var(--digit-line); animation: digit-roll var(--dur-slow) var(--ease-out) both; animation-delay: var(--digit-delay, 0ms); }
+.odometer-strip > span { height: var(--digit-line); }
+@keyframes digit-roll { from { transform: translateY(0); } to { transform: translateY(-50%); } }
+@keyframes button-shine { from { transform: translateX(-150%) skewX(-20deg); } to { transform: translateX(250%) skewX(-20deg); } }
+@media (hover: none) { .pocket[href]:active { transform: scale(var(--pocket-press-scale)); } .pocket[href]:hover, .pocket[href]:hover .pocket-tab, .pocket[href]:hover .pocket-icon i { transform: none; } .pocket[href]:active { transform: scale(var(--pocket-press-scale)); } }
+@media (hover: hover) and (pointer: fine) {
+    .pocket.tilt-active { transform: perspective(900px) rotateX(var(--tilt-x, 0deg)) rotateY(var(--tilt-y, 0deg)); }
+    .pocket.tilt-active::after { transform: translate(var(--stitch-x, 0px), var(--stitch-y, 0px)); }
+    .btn-primary::after { content: ''; position: absolute; inset: 0; background: var(--shine-color); transform: translateX(-150%) skewX(-20deg); pointer-events: none; }
+    .btn-primary:hover::after { animation: button-shine var(--dur-spring) var(--ease-out); }
+}
+@media (min-width: 768px) {
+    .pocket-carousel { grid-auto-flow: row; grid-auto-columns: auto; grid-template-columns: repeat(3, minmax(0, 1fr)); overflow: visible; padding: 0; gap: var(--space-6); }
+    .pocket-carousel > .pocket { margin-top: var(--tab-height); }
+    .dashboard-stats .money { font-size: 1.5rem; }
+    .dashboard-stats .badge { font-size: .75rem; }
+    .transaction-row { grid-template-columns: minmax(0, 1fr) minmax(120px, .5fr); }
+    .transaction-row > div:last-child { text-align: right; }
+}
+@media (min-width: 1280px) {
+    .dashboard-overview { grid-template-columns: minmax(0, 2fr) minmax(0, 1fr); align-items: stretch; }
+    .dashboard-overview .summary-panel { display: flex; align-items: center; }
+    .dashboard-overview .summary-panel > .page-header { width: 100%; align-items: flex-start; flex-direction: column; }
+    .dashboard-stats { grid-template-columns: 1fr; }
+    .dashboard-stats .panel { padding: var(--space-5); }
+    .dashboard-activity { grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr); }
+    .dashboard-form { order: 2; position: sticky; top: var(--space-6); }
+}
+@media (prefers-reduced-motion: reduce) { .pocket.tilt-active, .pocket[href]:active { transform: none; } .odometer-overlay { display: none; } .odometer-running > .money-prefix, .odometer-running > .money-digits { opacity: 1; } .btn-primary::after { display: none; } }

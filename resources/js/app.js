@@ -37,3 +37,6 @@ initializeLanding();
 
 import { initializeNavigation } from './ui/navigation';
 initializeNavigation();
+
+import { initializeTilt } from './ui/tilt';
+initializeTilt();

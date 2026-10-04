@@ -269,6 +269,8 @@ Semua animasi wajib memakai token ini, tanpa angka acak di view atau komponen.
 
 Keputusan fun modern tahap 1: mobile-first dengan navigasi bawah lima tab dan satu markup bersama untuk desktop rail; modal native menjadi bottom sheet, CTA mengambang memakai safe area. Jahitan hanya pada kantong. Gradien hanya pada ringkasan utama. Radius diperbarui 14/24/28; font dan ikon lokal tetap dipakai.
 
+Keputusan fun modern tahap 2: carousel snap hanya di mobile, grid kantong di tablet/desktop; dashboard bento dengan urutan baca transaksi terbaru sebelum formulir. Odometer menggunakan dua sel digit CSS tanpa mengubah nilai uang. Tilt dibatasi 4 derajat, memakai scheduler rAF bersama; sentuh memakai press.
+
 ## 12. Fun modern pass
 
 Bagian ini menimpa aturan lama yang bertentangan.

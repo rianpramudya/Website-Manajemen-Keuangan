@@ -63,3 +63,9 @@ Tahap 1 sedang dikerjakan.
 - Token radius 14/24/28, gradien primary–violet-deep, spring linear, jahitan kantong, stiker positif, tipografi uang. Tidak ada dependency baru.
 - Build/Pint bersih; 30 test (88 assertion) lulus; 45 screenshot pada 320/390/768/1024/1440, tanpa overflow atau error JS. Bar aksi diperbaiki agar tidak terperangkap transform header.
 - Artefak /tmp/dompet-fun-artifacts/stage1.
+
+### Upgrade tahap 2 — selesai
+- Dashboard mobile berurutan: saldo, dua statistik, carousel snap, transaksi terbaru, formulir. Desktop bento asimetris dengan formulir di samping.
+- Odometer digit berbasis CSS menjaga nilai akhir; maksimal delapan nominal dianimasikan. Efek tekan mobile, tilt desktop dengan satu scheduler rAF, tombol pegas/shine, progres bergelombang.
+- Build/Pint bersih; 30 test / 88 assertion lulus; 45 screenshot lima lebar tanpa overflow. Skrip QA dikoreksi: Kantong /pockets, Auth/Landing sesi tamu, respons HTTP wajib 200. Screenshot Kantong tahap 1 sebelumnya tidak sah (405), bukti terkoreksi ada pada tahap 2.
+- Tanpa dependency baru; artefak /tmp/dompet-fun-artifacts/stage2.
