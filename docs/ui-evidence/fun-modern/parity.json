@@ -1,0 +1,42 @@
+[
+  {
+    "page": "Dashboard",
+    "content_and_actions_equal": true
+  },
+  {
+    "page": "Kantong",
+    "content_and_actions_equal": true
+  },
+  {
+    "page": "Transaksi",
+    "content_and_actions_equal": true
+  },
+  {
+    "page": "Tagihan",
+    "content_and_actions_equal": true
+  },
+  {
+    "page": "Laporan",
+    "content_and_actions_equal": true
+  },
+  {
+    "page": "Profil",
+    "content_and_actions_equal": true
+  },
+  {
+    "page": "Detail kantong",
+    "content_and_actions_equal": true
+  },
+  {
+    "page": "Landing",
+    "content_and_actions_equal": true
+  },
+  {
+    "page": "Auth",
+    "content_and_actions_equal": true
+  },
+  {
+    "shared_element_name_matches": true,
+    "native_transition": "ready"
+  }
+]

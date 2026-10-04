@@ -1,0 +1,182 @@
+[
+  {
+    "device": "iPhone SE",
+    "page": "dashboard",
+    "passed": true
+  },
+  {
+    "device": "iPhone SE",
+    "page": "kantong",
+    "passed": true
+  },
+  {
+    "device": "iPhone SE",
+    "page": "transaksi",
+    "passed": true
+  },
+  {
+    "device": "iPhone SE",
+    "page": "tagihan",
+    "passed": true
+  },
+  {
+    "device": "iPhone SE",
+    "page": "laporan",
+    "passed": true
+  },
+  {
+    "device": "iPhone SE",
+    "page": "detail",
+    "passed": true
+  },
+  {
+    "device": "iPhone SE",
+    "page": "profil",
+    "passed": true
+  },
+  {
+    "device": "iPhone SE",
+    "page": "landing",
+    "passed": true
+  },
+  {
+    "device": "iPhone SE",
+    "page": "auth",
+    "passed": true
+  },
+  {
+    "device": "iPhone 14",
+    "page": "dashboard",
+    "passed": true
+  },
+  {
+    "device": "iPhone 14",
+    "page": "kantong",
+    "passed": true
+  },
+  {
+    "device": "iPhone 14",
+    "page": "transaksi",
+    "passed": true
+  },
+  {
+    "device": "iPhone 14",
+    "page": "tagihan",
+    "passed": true
+  },
+  {
+    "device": "iPhone 14",
+    "page": "laporan",
+    "passed": true
+  },
+  {
+    "device": "iPhone 14",
+    "page": "detail",
+    "passed": true
+  },
+  {
+    "device": "iPhone 14",
+    "page": "profil",
+    "passed": true
+  },
+  {
+    "device": "iPhone 14",
+    "page": "landing",
+    "passed": true
+  },
+  {
+    "device": "iPhone 14",
+    "page": "auth",
+    "passed": true
+  },
+  {
+    "device": "Pixel 7",
+    "page": "dashboard",
+    "passed": true
+  },
+  {
+    "device": "Pixel 7",
+    "page": "kantong",
+    "passed": true
+  },
+  {
+    "device": "Pixel 7",
+    "page": "transaksi",
+    "passed": true
+  },
+  {
+    "device": "Pixel 7",
+    "page": "tagihan",
+    "passed": true
+  },
+  {
+    "device": "Pixel 7",
+    "page": "laporan",
+    "passed": true
+  },
+  {
+    "device": "Pixel 7",
+    "page": "detail",
+    "passed": true
+  },
+  {
+    "device": "Pixel 7",
+    "page": "profil",
+    "passed": true
+  },
+  {
+    "device": "Pixel 7",
+    "page": "landing",
+    "passed": true
+  },
+  {
+    "device": "Pixel 7",
+    "page": "auth",
+    "passed": true
+  },
+  {
+    "device": "iPad (gen 7)",
+    "page": "dashboard",
+    "passed": true
+  },
+  {
+    "device": "iPad (gen 7)",
+    "page": "kantong",
+    "passed": true
+  },
+  {
+    "device": "iPad (gen 7)",
+    "page": "transaksi",
+    "passed": true
+  },
+  {
+    "device": "iPad (gen 7)",
+    "page": "tagihan",
+    "passed": true
+  },
+  {
+    "device": "iPad (gen 7)",
+    "page": "laporan",
+    "passed": true
+  },
+  {
+    "device": "iPad (gen 7)",
+    "page": "detail",
+    "passed": true
+  },
+  {
+    "device": "iPad (gen 7)",
+    "page": "profil",
+    "passed": true
+  },
+  {
+    "device": "iPad (gen 7)",
+    "page": "landing",
+    "passed": true
+  },
+  {
+    "device": "iPad (gen 7)",
+    "page": "auth",
+    "passed": true
+  }
+]

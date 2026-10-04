@@ -1,0 +1,13 @@
+{
+  "passed": [
+    "sheet + focus trap + Escape",
+    "drag sheet with close alternative",
+    "tabs + arrow keys",
+    "filter + empty result",
+    "bill filter",
+    "nojs",
+    "reduced",
+    "no-view-transitions"
+  ],
+  "errors": []
+}

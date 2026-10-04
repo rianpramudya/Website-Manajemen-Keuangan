@@ -1,0 +1,307 @@
+[
+  {
+    "page": "login",
+    "width": 320,
+    "passed": true
+  },
+  {
+    "page": "register",
+    "width": 320,
+    "passed": true
+  },
+  {
+    "page": "forgot",
+    "width": 320,
+    "passed": true
+  },
+  {
+    "page": "reset",
+    "width": 320,
+    "passed": true
+  },
+  {
+    "page": "confirm",
+    "width": 320,
+    "passed": true
+  },
+  {
+    "page": "login",
+    "width": 390,
+    "passed": true
+  },
+  {
+    "page": "register",
+    "width": 390,
+    "passed": true
+  },
+  {
+    "page": "forgot",
+    "width": 390,
+    "passed": true
+  },
+  {
+    "page": "reset",
+    "width": 390,
+    "passed": true
+  },
+  {
+    "page": "confirm",
+    "width": 390,
+    "passed": true
+  },
+  {
+    "page": "login",
+    "width": 768,
+    "passed": true
+  },
+  {
+    "page": "register",
+    "width": 768,
+    "passed": true
+  },
+  {
+    "page": "forgot",
+    "width": 768,
+    "passed": true
+  },
+  {
+    "page": "reset",
+    "width": 768,
+    "passed": true
+  },
+  {
+    "page": "confirm",
+    "width": 768,
+    "passed": true
+  },
+  {
+    "page": "login",
+    "width": 1024,
+    "passed": true
+  },
+  {
+    "page": "register",
+    "width": 1024,
+    "passed": true
+  },
+  {
+    "page": "forgot",
+    "width": 1024,
+    "passed": true
+  },
+  {
+    "page": "reset",
+    "width": 1024,
+    "passed": true
+  },
+  {
+    "page": "confirm",
+    "width": 1024,
+    "passed": true
+  },
+  {
+    "page": "login",
+    "width": 1440,
+    "passed": true
+  },
+  {
+    "page": "register",
+    "width": 1440,
+    "passed": true
+  },
+  {
+    "page": "forgot",
+    "width": 1440,
+    "passed": true
+  },
+  {
+    "page": "reset",
+    "width": 1440,
+    "passed": true
+  },
+  {
+    "page": "confirm",
+    "width": 1440,
+    "passed": true
+  },
+  {
+    "page": "verify",
+    "width": 320,
+    "passed": true
+  },
+  {
+    "page": "verify",
+    "width": 390,
+    "passed": true
+  },
+  {
+    "page": "verify",
+    "width": 768,
+    "passed": true
+  },
+  {
+    "page": "verify",
+    "width": 1024,
+    "passed": true
+  },
+  {
+    "page": "verify",
+    "width": 1440,
+    "passed": true
+  },
+  {
+    "page": "empty-dashboard",
+    "width": 320,
+    "passed": true
+  },
+  {
+    "page": "empty-kantong",
+    "width": 320,
+    "passed": true
+  },
+  {
+    "page": "empty-transaksi",
+    "width": 320,
+    "passed": true
+  },
+  {
+    "page": "empty-tagihan",
+    "width": 320,
+    "passed": true
+  },
+  {
+    "page": "empty-laporan",
+    "width": 320,
+    "passed": true
+  },
+  {
+    "page": "empty-dashboard",
+    "width": 390,
+    "passed": true
+  },
+  {
+    "page": "empty-kantong",
+    "width": 390,
+    "passed": true
+  },
+  {
+    "page": "empty-transaksi",
+    "width": 390,
+    "passed": true
+  },
+  {
+    "page": "empty-tagihan",
+    "width": 390,
+    "passed": true
+  },
+  {
+    "page": "empty-laporan",
+    "width": 390,
+    "passed": true
+  },
+  {
+    "page": "empty-dashboard",
+    "width": 1440,
+    "passed": true
+  },
+  {
+    "page": "empty-kantong",
+    "width": 1440,
+    "passed": true
+  },
+  {
+    "page": "empty-transaksi",
+    "width": 1440,
+    "passed": true
+  },
+  {
+    "page": "empty-tagihan",
+    "width": 1440,
+    "passed": true
+  },
+  {
+    "page": "empty-laporan",
+    "width": 1440,
+    "passed": true
+  },
+  {
+    "page": "nojs-landing",
+    "width": 390,
+    "passed": true
+  },
+  {
+    "page": "nojs-login",
+    "width": 390,
+    "passed": true
+  },
+  {
+    "page": "nojs-register",
+    "width": 390,
+    "passed": true
+  },
+  {
+    "page": "nojs-landing",
+    "width": 1440,
+    "passed": true
+  },
+  {
+    "page": "nojs-login",
+    "width": 1440,
+    "passed": true
+  },
+  {
+    "page": "nojs-register",
+    "width": 1440,
+    "passed": true
+  },
+  {
+    "page": "reduced-landing",
+    "width": 390,
+    "passed": true
+  },
+  {
+    "page": "reduced-login",
+    "width": 390,
+    "passed": true
+  },
+  {
+    "page": "reduced-register",
+    "width": 390,
+    "passed": true
+  },
+  {
+    "page": "reduced-landing",
+    "width": 1440,
+    "passed": true
+  },
+  {
+    "page": "reduced-login",
+    "width": 1440,
+    "passed": true
+  },
+  {
+    "page": "reduced-register",
+    "width": 1440,
+    "passed": true
+  },
+  {
+    "page": "iPhone SE-landscape-dashboard",
+    "width": 568,
+    "passed": true
+  },
+  {
+    "page": "iPhone 14-landscape-dashboard",
+    "width": 664,
+    "passed": true
+  },
+  {
+    "page": "Pixel 7-landscape-dashboard",
+    "width": 839,
+    "passed": true
+  },
+  {
+    "page": "iPad (gen 7)-landscape-dashboard",
+    "width": 1080,
+    "passed": true
+  }
+]

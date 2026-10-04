@@ -1,0 +1,22 @@
+@page { margin: 32pt; }
+body { font-family: DejaVu Sans, sans-serif; color: var(--color-text); background: var(--color-surface); font-size: 10pt; line-height: 1.5; }
+h1 { font-size: 20pt; margin: 0 0 8pt; }
+h2 { font-size: 14pt; margin: 24pt 0 8pt; page-break-after: avoid; }
+p { margin: 0 0 8pt; }
+.report-header { border-bottom: 2pt solid var(--color-muted); padding-bottom: 16pt; }
+.muted { color: var(--color-muted); }
+table { width: 100%; border-collapse: collapse; table-layout: fixed; margin-bottom: 16pt; }
+thead { display: table-header-group; }
+tr { page-break-inside: avoid; }
+th, td { padding: 8pt; border-bottom: 1pt solid var(--color-border); vertical-align: top; word-wrap: break-word; }
+th { text-align: left; background: var(--pocket-stone-soft); }
+.amount { text-align: right; font-variant-numeric: tabular-nums; }
+.summary td { border: 1pt solid var(--color-border); }
+.summary strong { display: block; font-size: 12pt; }
+.date-col { width: 16%; }
+.category-col { width: 22%; }
+.description-col { width: 32%; }
+.amount-col { width: 30%; }
+.footer { font-size: 8pt; color: var(--color-muted); margin-top: 24pt; }
+
+.history-page { page-break-before: always; }
