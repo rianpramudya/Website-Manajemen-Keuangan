@@ -1,0 +1,4 @@
+@foreach(['dashboard' => ['Dashboard', 'squares-four'], 'categories.index' => ['Kantong', 'wallet'], 'transactions.history' => ['Riwayat transaksi', 'arrows-down-up'], 'bills.index' => ['Tagihan', 'receipt'], 'reports.index' => ['Laporan', 'chart-bar']] as $route => [$label, $icon])
+<a class="nav-link" href="{{ route($route) }}" @if(request()->routeIs($route) || ($route === 'categories.index' && request()->routeIs('categories.show'))) aria-current="page" @endif><x-icon :name="$icon" />{{ $label }}</a>
+@endforeach
+<details class="relative"><summary class="nav-link cursor-pointer">Akun</summary><div class="panel absolute right-0 shadow-overlay stack"><p class="font-bold break-words">{{ auth()->user()->name }}</p><a class="nav-link" href="{{ route('profile.edit') }}">Profil</a><form method="POST" action="{{ route('logout') }}">@csrf<x-button type="submit" variant="secondary">Keluar</x-button></form></div></details>
