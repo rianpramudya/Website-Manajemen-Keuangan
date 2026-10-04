@@ -14,11 +14,17 @@ import { initializeReveal } from './ui/reveal';
 import { initializeProgress } from './ui/progress';
 import { initializePocketSearch } from './ui/pockets';
 
+import { registerBillTable, initializeBillFilter } from './ui/bill-table';
+import { initializeFinanceEvents } from './ui/finance-events';
+
+registerBillTable(Alpine);
 window.Alpine = Alpine;
 Alpine.start();
+initializeFinanceEvents();
 initializeForms();
 initializeDialogs();
 initializeCountUp();
 initializeReveal();
 initializeProgress();
 initializePocketSearch();
+initializeBillFilter();

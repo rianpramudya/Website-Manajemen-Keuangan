@@ -2,6 +2,7 @@
 
 namespace Tests\Feature;
 
+use App\Models\Bill;
 use App\Models\Category;
 use App\Models\Transaction;
 use App\Models\User;
@@ -30,5 +31,13 @@ class UiRenderingTest extends TestCase
         foreach (['/dashboard', '/pockets', '/categories/'.$category->id] as $path) {
             $this->actingAs($user)->get($path)->assertOk()->assertSee('&lt;script&gt;Nama kantong panjang&lt;/script&gt;', false)->assertSee('-Rp 999.999.999.999', false);
         }
+    }
+
+    public function test_bill_names_are_safe_in_forms_and_bulk_calculator(): void
+    {
+        $user = User::factory()->create();
+        $bill = Bill::create(['user_id' => $user->id, 'name' => "Internet 'rumah' <aman>", 'amount' => 250000, 'due_date' => 15, 'frequency' => 'monthly']);
+
+        $this->actingAs($user)->get('/bills')->assertOk()->assertSee('Internet &#039;rumah&#039; &lt;aman&gt;', false)->assertSee('payments[0][amount]', false)->assertSee(route('bills.pay', $bill), false);
     }
 }

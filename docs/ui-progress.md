@@ -39,3 +39,11 @@ Tahap 1 sedang dikerjakan.
 - Tidak ada target kantong dalam model: tidak menampilkan target atau persen rekaan; progres dipakai untuk pembayaran/data laporan yang memiliki pembagi nyata.
 - Pint lulus, build lulus, test sebelumnya 25 lulus; test UI tambahan 2 lulus (14 assertions), mencakup empty state, escaping nama, saldo negatif besar.
 - Berikutnya: transaksi, tagihan, kalkulator bulk dan efek peristiwa yang dikonfirmasi server.
+
+## Tahap 3 selesai
+- Riwayat transaksi, kartu tagihan, create/edit/pay/delete, tambah saldo, dan bulk payment dimigrasikan.
+- Kalkulator bulk dipindah ke modul Alpine; rumus pembulatan/persen/grandTotal dipertahankan.
+- Label perkiraan membedakan simulasi pembayaran dari status server.
+- Efek centang toast, highlight transaksi baru, koin pemasukan/transfer terlihat, dan pop Lunas dipicu pesan sukses server. Reduced motion dan perangkat terbatas melewati perayaan.
+- Pint lulus, build lulus, suite 27 lulus; test UI terbaru 3 lulus (18 assertions), termasuk nama tagihan dengan tanda kutip/HTML dan kontrak form bulk/pay.
+- Berikutnya: laporan/PDF, seluruh auth, landing, profil; lalu pengujian browser terisolasi dan polish.
