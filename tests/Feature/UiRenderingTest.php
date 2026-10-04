@@ -29,7 +29,8 @@ class UiRenderingTest extends TestCase
         Transaction::create(['user_id' => $user->id, 'category_id' => $category->id, 'type' => 'expense', 'amount' => 999999999999, 'date' => now(), 'description' => 'Catatan uji']);
 
         foreach (['/dashboard', '/pockets', '/categories/'.$category->id] as $path) {
-            $this->actingAs($user)->get($path)->assertOk()->assertSee('&lt;script&gt;Nama kantong panjang&lt;/script&gt;', false)->assertSee('-Rp 999.999.999.999', false);
+            $response = $this->actingAs($user)->get($path)->assertOk()->assertSee('&lt;script&gt;Nama kantong panjang&lt;/script&gt;', false);
+            $this->assertStringContainsString('-Rp 999.999.999.999', strip_tags($response->getContent()));
         }
     }
 
@@ -39,5 +40,27 @@ class UiRenderingTest extends TestCase
         $bill = Bill::create(['user_id' => $user->id, 'name' => "Internet 'rumah' <aman>", 'amount' => 250000, 'due_date' => 15, 'frequency' => 'monthly']);
 
         $this->actingAs($user)->get('/bills')->assertOk()->assertSee('Internet &#039;rumah&#039; &lt;aman&gt;', false)->assertSee('payments[0][amount]', false)->assertSee(route('bills.pay', $bill), false);
+    }
+
+    public function test_report_export_renders_local_styles_and_pdf(): void
+    {
+        $user = User::factory()->create();
+        $response = $this->actingAs($user)->get('/reports/export');
+
+        $response->assertOk()->assertHeader('content-type', 'application/pdf');
+        $this->assertStringStartsWith('%PDF-', $response->getContent());
+    }
+
+    public function test_decimal_amounts_and_long_report_rows_render(): void
+    {
+        $user = User::factory()->create();
+        $category = Category::create(['user_id' => $user->id, 'name' => str_repeat('Kantong panjang ', 16), 'type' => 'income']);
+        foreach (range(1, 12) as $index) {
+            Transaction::create(['user_id' => $user->id, 'category_id' => $category->id, 'type' => 'income', 'amount' => 1234.50, 'date' => now(), 'description' => str_repeat('Catatan panjang ', 16)]);
+        }
+
+        $response = $this->actingAs($user)->get('/dashboard')->assertOk();
+        $this->assertStringContainsString('Rp 1.234,50', strip_tags($response->getContent()));
+        $this->actingAs($user)->get('/reports/export')->assertOk()->assertHeader('content-type', 'application/pdf');
     }
 }

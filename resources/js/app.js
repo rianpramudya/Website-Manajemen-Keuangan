@@ -1,9 +1,9 @@
 import './bootstrap';
-import '@fontsource/plus-jakarta-sans/400.css';
-import '@fontsource/plus-jakarta-sans/500.css';
-import '@fontsource/plus-jakarta-sans/600.css';
-import '@fontsource/plus-jakarta-sans/700.css';
-import '@fontsource/plus-jakarta-sans/800.css';
+import '@fontsource/plus-jakarta-sans/latin-400.css';
+import '@fontsource/plus-jakarta-sans/latin-500.css';
+import '@fontsource/plus-jakarta-sans/latin-600.css';
+import '@fontsource/plus-jakarta-sans/latin-700.css';
+import '@fontsource/plus-jakarta-sans/latin-800.css';
 import '@phosphor-icons/web/regular';
 import Alpine from 'alpinejs';
 import { initializeForms } from './ui/forms';
@@ -18,13 +18,19 @@ import { registerBillTable, initializeBillFilter } from './ui/bill-table';
 import { initializeFinanceEvents } from './ui/finance-events';
 
 registerBillTable(Alpine);
+import { initializeLanding } from './ui/landing';
+
+import { initializeDeletion } from './ui/deletion';
+
 window.Alpine = Alpine;
-Alpine.start();
+initializeDeletion();
 initializeFinanceEvents();
 initializeForms();
 initializeDialogs();
+Alpine.start();
 initializeCountUp();
 initializeReveal();
 initializeProgress();
 initializePocketSearch();
 initializeBillFilter();
+initializeLanding();

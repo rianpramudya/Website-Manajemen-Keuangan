@@ -2,7 +2,8 @@ import defaultTheme from 'tailwindcss/defaultTheme';
 import forms from '@tailwindcss/forms';
 
 export default {
-    content: ['./vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php', './storage/framework/views/*.php', './resources/views/**/*.blade.php'],
+    safelist: ['badge-success', 'badge-danger', 'badge-warning', 'badge-info', 'badge-neutral'],
+    content: ['./vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php', './storage/framework/views/*.php', './resources/views/**/*.blade.php', './resources/js/**/*.js'],
     theme: { extend: {
         fontFamily: { sans: ['Plus Jakarta Sans', ...defaultTheme.fontFamily.sans] },
         colors: Object.fromEntries(['bg', 'surface', 'text', 'muted', 'border', 'control-border', 'primary', 'primary-hover', 'on-primary', 'primary-soft', 'accent', 'on-accent', 'success', 'success-soft', 'warning', 'warning-soft', 'danger', 'danger-soft', 'info', 'info-soft', 'focus'].map(name => [name, `var(--color-${name})`])),

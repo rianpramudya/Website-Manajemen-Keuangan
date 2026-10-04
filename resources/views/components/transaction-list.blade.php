@@ -8,7 +8,11 @@
         </div>
         <div class="sm:text-right min-w-0"><x-money :value="$trx->type === 'income' ? $trx->amount : -$trx->amount" class="font-bold" />
         @if($deletable)
-            <form action="{{ route('transactions.destroy', $trx) }}" method="POST" class="mt-2" data-confirm="Hapus transaksi ini? Saldo akan disesuaikan." data-remove-id="{{ $trx->id }}">@csrf @method('DELETE')<x-button variant="tertiary" type="submit" icon="trash" class="text-danger">Hapus transaksi</x-button></form>
+            <x-button variant="tertiary" :data-open-dialog="'deleteTransaction'.$trx->id" icon="trash" class="text-danger mt-2">Hapus transaksi</x-button>
+            <x-dialog :id="'deleteTransaction'.$trx->id" title="Hapus transaksi?">
+                <p class="mb-6">Transaksi {{ $trx->description ?: ($trx->category->name ?? 'Umum') }} akan dihapus dan saldo disesuaikan.</p>
+                <form action="{{ route('transactions.destroy', $trx) }}" method="POST" class="actions" data-remove-id="{{ $trx->id }}">@csrf @method('DELETE')<x-button variant="secondary" data-close-dialog>Batal</x-button><x-button variant="danger" type="submit" icon="trash">Hapus transaksi</x-button></form>
+            </x-dialog>
         @endif
         </div>
     </article>

@@ -3,3 +3,4 @@
 <meta name="csrf-token" content="{{ csrf_token() }}">
 <title>Dompet Rantau</title>
 @vite(['resources/css/app.css', 'resources/js/app.js'])
+<noscript><link rel="stylesheet" href="{{ asset('ui-nojs.css') }}"></noscript>

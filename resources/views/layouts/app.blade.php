@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="id">
 <head><x-document-head /></head>
-<body>
+<body data-ui-user="{{ auth()->id() }}">
     <a href="#main-content" class="sr-only focus:not-sr-only focus:btn">Langsung ke konten</a>
     @include('layouts.navigation')
     <x-toast />

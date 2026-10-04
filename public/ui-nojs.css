@@ -1,0 +1,2 @@
+body dialog.dialog:not([open]) { display: block; position: static; margin: var(--space-6) auto; }
+[data-open-dialog], [data-close-dialog], [data-js-control], [data-dismiss-toast] { display: none !important; }

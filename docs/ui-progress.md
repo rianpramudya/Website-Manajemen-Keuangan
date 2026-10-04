@@ -47,3 +47,13 @@ Tahap 1 sedang dikerjakan.
 - Efek centang toast, highlight transaksi baru, koin pemasukan/transfer terlihat, dan pop Lunas dipicu pesan sukses server. Reduced motion dan perangkat terbatas melewati perayaan.
 - Pint lulus, build lulus, suite 27 lulus; test UI terbaru 3 lulus (18 assertions), termasuk nama tagihan dengan tanda kutip/HTML dan kontrak form bulk/pay.
 - Berikutnya: laporan/PDF, seluruh auth, landing, profil; lalu pengujian browser terisolasi dan polish.
+
+## Migrasi tahap 4 — selesai
+- Laporan, PDF lokal, enam halaman auth, landing, profil, dan fallback tanpa JS selesai.
+- Build berhasil; Pint dengan pengecualian perubahan pengguna bersih; 30 test / 88 assertion lulus di SQLite terisolasi.
+- Playwright: 59 screenshot, pemeriksaan modal, validasi, loading, transfer, pembayaran, hapus, tanpa JS dan reduced-motion lulus. 12 pasangan kontras lulus.
+- PDF sintetis: empat halaman, tabel dan teks dalam batas halaman. Artefak tersedia di /tmp/dompet-ui-artifacts.
+- Perubahan composer.lock dan config/database.php milik pengguna tidak disertakan. Tidak ada push.
+
+## Fun modern pass — mulai
+- Instruksi terbaru Bagian 12–13 mengungguli fondasi lama. Baseline migrasi disimpan sebelum branch upgrade.

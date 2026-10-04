@@ -71,19 +71,34 @@
     --reveal-distance: 8px;
     --modal-distance: 12px;
     --icon-tilt: 4deg;
+    --stamp-scale: .8;
+    --tab-hover-scale: 1.04;
     --tab-width: 64px;
     --tab-height: 16px;
     --focus-width: 3px;
     --control-height: 44px;
     --chart-height: 12px;
     --stroke-length: 32;
+    --landing-lift: -6px;
+    --landing-duration: 6000ms;
+    --landing-ease: ease-in-out;
+    --font-page-mobile: 28px;
+    --font-page-desktop: 32px;
+    --font-balance-mobile: 32px;
+    --font-balance-desktop: 40px;
+    --icon-control: 20px;
+    --icon-metadata: 16px;
+    --pdf-row-budget: 36;
+    --pdf-category-columns: 18;
+    --pdf-description-columns: 32;
+    --pdf-row-padding-lines: 2;
 }
 @layer base {
     html { scroll-padding-top: var(--space-8); }
     body { @apply bg-bg text-text font-sans antialiased; }
-    h1 { @apply text-3xl font-extrabold; line-height: 1.2; }
-    h2 { @apply text-xl font-bold; }
-    h3 { @apply text-lg font-bold; }
+    h1 { overflow-wrap: anywhere; @apply font-extrabold; font-size: var(--font-page-mobile); line-height: 1.2; }
+    h2 { overflow-wrap: anywhere; @apply text-xl font-bold; }
+    h3 { overflow-wrap: anywhere; @apply text-lg font-bold; }
     p { overflow-wrap: anywhere; }
     a, button, input, select, textarea { -webkit-tap-highlight-color: transparent; }
     :focus-visible { outline: var(--focus-width) solid var(--color-focus); outline-offset: var(--space-1); }
@@ -98,6 +113,8 @@
     .stack { @apply space-y-4; }
     .actions { @apply flex flex-wrap items-center gap-3; }
     .btn { @apply inline-flex items-center justify-center gap-2 px-5 py-3 rounded-control font-bold text-sm cursor-pointer; min-height: var(--control-height); transition: transform var(--dur-fast) var(--ease-out); }
+    .btn > .ph, .nav-link > .ph { font-size: var(--icon-control); }
+    .badge > .ph { font-size: var(--icon-metadata); }
     .btn:hover { transform: translateY(var(--button-lift)); }
     .btn:active { transform: scale(var(--press-scale)); }
     .btn:disabled { @apply opacity-60 cursor-not-allowed; transform: none; }
@@ -113,8 +130,8 @@
     .money-field { @apply relative; }
     .money-field > span { @apply absolute left-4 top-3 text-muted font-bold; }
     .money-field .field { @apply pl-12; }
-    .money { font-variant-numeric: tabular-nums; overflow-wrap: anywhere; }
-    .balance { @apply text-3xl sm:text-4xl font-extrabold; }
+    .money { font-variant-numeric: tabular-nums; overflow-wrap: normal; }
+    .balance { @apply font-extrabold; font-size: var(--font-balance-mobile); }
     .nav-shell { @apply bg-surface border-b border-border; position: relative; z-index: 30; }
     .nav-inner { @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex flex-wrap items-center justify-between gap-4; }
     .brand { @apply inline-flex items-center gap-3 font-extrabold text-lg; }
@@ -129,7 +146,7 @@
     .pocket-icon { @apply inline-flex items-center justify-center rounded-control bg-surface p-3 text-2xl; color: var(--pocket-strong); }
     .pocket[data-palette=yellow] .pocket-icon { color: var(--color-warning); }
     .pocket[href]:hover { transform: translateY(var(--hover-lift)); box-shadow: var(--shadow-card); }
-    .pocket[href]:hover .pocket-tab { transform: translateY(var(--hover-lift)) scaleX(1.04); }
+    .pocket[href]:hover .pocket-tab { transform: translateY(var(--hover-lift)) scaleX(var(--tab-hover-scale)); }
     .pocket[href]:hover .pocket-icon i { transform: rotate(var(--icon-tilt)); }
     .pocket-icon i { transition: transform var(--dur-fast) var(--ease-out); }
     .badge { @apply inline-flex items-center gap-2 text-xs font-bold px-3 py-2; border-radius: var(--radius-pill); }
@@ -142,6 +159,7 @@
     .dialog::backdrop { background: var(--color-overlay); }
     .dialog[open] { animation: modal-in var(--dur-base) var(--ease-out); }
     .dialog[open]::backdrop { animation: fade-in var(--dur-base) var(--ease-out); }
+    .dialog.is-closing::backdrop { animation: fade-out var(--dur-fast) var(--ease-in); }
     .dialog.is-closing { animation: modal-out var(--dur-fast) var(--ease-in); }
     .dialog-title { @apply flex justify-between items-start gap-4 mb-6; }
     .toast { @apply fixed bottom-4 left-4 right-4 bg-surface border border-border rounded-card p-5 shadow-overlay; z-index: 60; animation: toast-in var(--dur-base) var(--ease-out); }
@@ -152,24 +170,24 @@
     .skeleton { @apply rounded-control bg-border overflow-hidden; height: var(--space-6); }
     .skeleton::after { content: ''; display: block; height: 100%; background: var(--color-surface); opacity: .5; animation: shimmer var(--dur-moment) var(--ease-out); }
     .progress-track { @apply w-full rounded-full overflow-hidden bg-border; height: var(--chart-height); }
-    .progress-fill { height: 100%; background: var(--pocket-strong, var(--color-primary)); transform-origin: left; }
+    .progress-fill { height: 100%; fill: var(--pocket-strong, var(--color-primary)); transform-origin: left; }
     .transaction-row { @apply relative flex flex-col sm:flex-row sm:items-center justify-between gap-4 py-4 border-b border-border; min-width: 0; }
     .transaction-row:last-child { @apply border-b-0; }
     .transaction-row.is-new::before { content: ''; position: absolute; inset: 0; background: var(--color-warning-soft); border-radius: var(--radius-control); z-index: 0; animation: highlight-out var(--dur-moment) var(--ease-out) forwards; pointer-events: none; }
     .transaction-row > * { position: relative; }
     .count-up { position: relative; }
-    .count-up-overlay { position: absolute; inset: 0; background: inherit; pointer-events: none; }
+    .count-up-overlay { position: absolute; inset: 0; background: inherit; pointer-events: none; user-select: none; }
     .check-draw path { stroke-dasharray: var(--stroke-length); stroke-dashoffset: 0; animation: check-in var(--dur-base) var(--ease-out); }
     .stamp { animation: stamp-in var(--dur-base) var(--ease-spring); }
     .coin { @apply fixed bg-accent text-on-accent rounded-full flex items-center justify-center; width: var(--space-7); height: var(--space-7); z-index: 40; pointer-events: none; }
     .reveal-in { animation: reveal-in var(--dur-slow) var(--ease-out) both; }
-    .remove-item { animation: item-out var(--dur-base) var(--ease-in); }
     .chart-row { @apply space-y-2; }
     .bulk-row { @apply grid gap-4 border-b border-border py-5; }
     .landing-title { @apply text-4xl sm:text-5xl font-extrabold; line-height: 1.1; }
     .landing-preview { @apply grid gap-6; }
 }
 [data-palette=yellow] { --pocket-strong: var(--pocket-yellow); --pocket-soft: var(--pocket-yellow-soft); }
+[data-palette=yellow] .progress-fill { fill: var(--color-warning); }
 [data-palette=teal] { --pocket-strong: var(--pocket-teal); --pocket-soft: var(--pocket-teal-soft); }
 [data-palette=violet] { --pocket-strong: var(--pocket-violet); --pocket-soft: var(--pocket-violet-soft); }
 [data-palette=orange] { --pocket-strong: var(--pocket-orange); --pocket-soft: var(--pocket-orange-soft); }
@@ -177,8 +195,19 @@
 [data-palette=lime] { --pocket-strong: var(--pocket-lime); --pocket-soft: var(--pocket-lime-soft); }
 [data-palette=indigo] { --pocket-strong: var(--pocket-indigo); --pocket-soft: var(--pocket-indigo-soft); }
 [data-palette=stone] { --pocket-strong: var(--pocket-stone); --pocket-soft: var(--pocket-stone-soft); }
-@media (min-width: 768px) { .toast { left: auto; bottom: auto; top: var(--space-6); right: var(--space-6); max-width: 420px; } }
+@media (min-width: 768px) { h1 { font-size: var(--font-page-desktop); } .balance { font-size: var(--font-balance-desktop); } .toast { left: auto; bottom: auto; top: var(--space-6); right: var(--space-6); max-width: 420px; } }
 @media (min-width: 1024px) { .bulk-row { grid-template-columns: 1fr 2fr 1fr; } }
+.pocket-created { animation: stamp-in var(--dur-slow) var(--ease-spring); }
+.pocket-created .pocket-tab { animation: tab-open var(--dur-slow) var(--ease-out); }
+@keyframes tab-open { from { clip-path: polygon(0 100%, 0 100%, 12% 100%, 80% 100%, 100% 100%); } to { clip-path: polygon(0 100%, 0 35%, 12% 0, 80% 0, 100% 100%); } }
+.progress-enter { animation: progress-in var(--dur-slow) var(--ease-out); }
+.landing-idle { animation: landing-idle var(--landing-duration) var(--landing-ease) infinite; }
+.landing-idle-paused { animation-play-state: paused; }
+@keyframes progress-in { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+@keyframes landing-idle { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(var(--landing-lift)); } }
+.loading-indicator { animation: loading-turn var(--dur-slow) var(--ease-out); }
+@keyframes loading-turn { from { transform: rotate(0); } to { transform: rotate(1turn); } }
+@keyframes fade-out { to { opacity: 0; } }
 @keyframes fade-in { from { opacity: 0; } to { opacity: 1; } }
 @keyframes reveal-in { from { opacity: 0; transform: translateY(var(--reveal-distance)); } to { opacity: 1; transform: none; } }
 @keyframes modal-in { from { opacity: 0; transform: translateY(var(--modal-distance)); } to { opacity: 1; transform: none; } }
@@ -189,8 +218,7 @@
 @keyframes shimmer { from { transform: translateX(-100%); } to { transform: translateX(100%); } }
 @keyframes highlight-out { to { opacity: 0; } }
 @keyframes check-in { from { stroke-dashoffset: var(--stroke-length); } to { stroke-dashoffset: 0; } }
-@keyframes stamp-in { from { opacity: 0; transform: scale(.8) rotate(-4deg); } to { opacity: 1; transform: none; } }
-@keyframes item-out { to { opacity: 0; transform: scale(.97); } }
+@keyframes stamp-in { from { opacity: 0; transform: scale(var(--stamp-scale)) rotate(calc(-1 * var(--icon-tilt))); } to { opacity: 1; transform: none; } }
 @media (prefers-reduced-motion: reduce) {
     *, *::before, *::after { animation: none !important; transition: none !important; }
     .btn:hover, .btn:active, .pocket:hover, .pocket:hover .pocket-tab, .pocket:hover .pocket-icon i { transform: none !important; }
