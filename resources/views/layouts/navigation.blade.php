@@ -2,8 +2,8 @@
     <div class="nav-inner">
         <a class="brand" href="{{ auth()->check() ? route('dashboard') : url('/') }}"><span class="brand-icon"><x-icon name="wallet" /></span>Dompet Rantau</a>
         @auth
-        <details class="md:hidden w-full"><summary class="btn btn-secondary">Menu navigasi</summary><div class="nav-links pt-4">@include('layouts.navigation-links')</div></details>
-        <div class="hidden md:flex nav-links">@include('layouts.navigation-links')</div>
+        <div class="app-tabs" data-navigation><span class="nav-pill" aria-hidden="true"></span>@include('layouts.navigation-links')</div>
+        <details class="account-menu"><summary class="nav-link cursor-pointer" aria-label="Menu akun"><x-icon name="user-circle" /><span>Akun</span></summary><div class="panel stack"><p class="font-bold break-words">{{ auth()->user()->name }}</p><a class="nav-link" href="{{ route('profile.edit') }}">Profil</a><form method="POST" action="{{ route('logout') }}">@csrf<x-button type="submit" variant="secondary">Keluar</x-button></form></div></details>
         @else
         <div class="actions"><x-button :href="route('login')" variant="tertiary">Masuk</x-button><x-button :href="route('register')">Daftar</x-button></div>
         @endauth

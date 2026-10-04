@@ -1,2 +1,4 @@
 body dialog.dialog:not([open]) { display: block; position: static; margin: var(--space-6) auto; }
 [data-open-dialog], [data-close-dialog], [data-js-control], [data-dismiss-toast] { display: none !important; }
+body dialog.dialog:not([open]) { width: calc(100% - var(--space-7)); max-width: 560px; border-radius: var(--radius-modal); }
+.dialog-handle { display: none; }

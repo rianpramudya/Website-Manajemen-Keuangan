@@ -267,6 +267,8 @@ Semua animasi wajib memakai token ini, tanpa angka acak di view atau komponen.
 - Tanpa JS, dialog ditampilkan sebagai formulir biasa dengan judul/konfirmasi; kontrol yang hanya berfungsi lewat JS disembunyikan.
 - Penghapusan dengan JS memakai endpoint dan CSRF yang sama, menunggu konfirmasi sukses server, lalu memudarkan baris asli sebelum memuat ulang. Tanpa JS, form server berjalan seperti biasa.
 
+Keputusan fun modern tahap 1: mobile-first dengan navigasi bawah lima tab dan satu markup bersama untuk desktop rail; modal native menjadi bottom sheet, CTA mengambang memakai safe area. Jahitan hanya pada kantong. Gradien hanya pada ringkasan utama. Radius diperbarui 14/24/28; font dan ikon lokal tetap dipakai.
+
 ## 12. Fun modern pass
 
 Bagian ini menimpa aturan lama yang bertentangan.

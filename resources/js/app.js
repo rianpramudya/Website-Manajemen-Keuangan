@@ -34,3 +34,6 @@ initializeProgress();
 initializePocketSearch();
 initializeBillFilter();
 initializeLanding();
+
+import { initializeNavigation } from './ui/navigation';
+initializeNavigation();

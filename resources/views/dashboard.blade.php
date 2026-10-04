@@ -1,7 +1,7 @@
 <x-app-layout>
 <div class="page">
-    <header class="page-header" data-reveal><div><h1>Halo, {{ auth()->user()->name }}</h1><p class="muted mt-2">Catatan kecil hari ini, rencana lebih tenang nanti.</p></div><x-button href="#create-transaction" icon="plus">Tambah transaksi</x-button></header>
-    <section class="pocket" data-palette="yellow" aria-labelledby="balance-title" data-reveal>
+    <header class="page-header" data-reveal><div><h1>Halo, {{ auth()->user()->name }}</h1><p class="muted mt-2">Catatan kecil hari ini, rencana lebih tenang nanti.</p></div><x-action-bar><x-button href="#create-transaction" icon="plus">Tambah transaksi</x-button></x-action-bar></header>
+    <section class="pocket summary-panel" data-palette="yellow" aria-labelledby="balance-title" data-reveal>
         <span class="pocket-tab" aria-hidden="true"></span>
         <div class="page-header"><div class="stack"><h2 id="balance-title">Saldo keseluruhan</h2><x-money :value="$balance" :count="true" class="balance block" /></div><x-button variant="secondary" data-open-dialog="transferModal" icon="arrows-left-right">Transfer dana</x-button></div>
     </section>

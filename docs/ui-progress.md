@@ -57,3 +57,9 @@ Tahap 1 sedang dikerjakan.
 
 ## Fun modern pass — mulai
 - Instruksi terbaru Bagian 12–13 mengungguli fondasi lama. Baseline migrasi disimpan sebelum branch upgrade.
+
+### Upgrade tahap 1 — selesai
+- Mobile 390px sebagai dasar: bottom navigation lima tab, pill pegas, safe area, CTA lengket, bottom sheet dengan fokus native. Desktop memakai rail bersama.
+- Token radius 14/24/28, gradien primary–violet-deep, spring linear, jahitan kantong, stiker positif, tipografi uang. Tidak ada dependency baru.
+- Build/Pint bersih; 30 test (88 assertion) lulus; 45 screenshot pada 320/390/768/1024/1440, tanpa overflow atau error JS. Bar aksi diperbaiki agar tidak terperangkap transform header.
+- Artefak /tmp/dompet-fun-artifacts/stage1.
