@@ -4,6 +4,8 @@ export function initializeReveal() {
     const tokens = getComputedStyle(document.documentElement);
     const stagger = parseFloat(tokens.getPropertyValue('--stagger'));
     const limit = parseInt(tokens.getPropertyValue('--reveal-limit'));
+    const elements = [...document.querySelectorAll('[data-reveal]')].filter(element => !element.matches('.page-header:has(> .action-bar)'));
+    if (CSS.supports('animation-timeline', 'view()')) { elements.slice(0, limit).forEach(element => element.classList.add('scroll-reveal')); return; }
     let index = 0;
     const observer = new IntersectionObserver(entries => {
         entries.forEach(entry => {
@@ -14,5 +16,5 @@ export function initializeReveal() {
             observer.unobserve(entry.target);
         });
     });
-    document.querySelectorAll('[data-reveal]').forEach(element => observer.observe(element));
+    elements.forEach(element => observer.observe(element));
 }

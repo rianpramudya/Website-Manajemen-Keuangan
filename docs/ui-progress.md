@@ -69,3 +69,9 @@ Tahap 1 sedang dikerjakan.
 - Odometer digit berbasis CSS menjaga nilai akhir; maksimal delapan nominal dianimasikan. Efek tekan mobile, tilt desktop dengan satu scheduler rAF, tombol pegas/shine, progres bergelombang.
 - Build/Pint bersih; 30 test / 88 assertion lulus; 45 screenshot lima lebar tanpa overflow. Skrip QA dikoreksi: Kantong /pockets, Auth/Landing sesi tamu, respons HTTP wajib 200. Screenshot Kantong tahap 1 sebelumnya tidak sah (405), bukti terkoreksi ada pada tahap 2.
 - Tanpa dependency baru; artefak /tmp/dompet-fun-artifacts/stage2.
+
+### Upgrade tahap 3 — selesai
+- View Transitions lintas halaman dan nama shared element per kantong, dengan navigasi tetap. Scroll reveal CSS memakai fallback IntersectionObserver.
+- Tab Riwayat/Info punya keyboard panah dan fallback tanpa JS; filter crossfade; bottom sheet dapat ditarik dengan alternatif tutup/Escape. Toast pegas, timebar berhenti saat hover/fokus; VisualViewport menghindari keyboard.
+- Build/Pint bersih; 30 test / 88 assertion lulus; 45 screenshot tanpa overflow; delapan kelompok interaksi/fallback lulus tanpa error JS.
+- Lighthouse awal Dashboard mobile: Performance 98, Accessibility 95. Temuan kontras akan dipoles di tahap 4. Tidak ada dependency runtime baru.

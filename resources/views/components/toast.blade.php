@@ -5,6 +5,7 @@
         <p class="flex-1">{{ session('error') ?? session('success') }}</p>
         <x-button variant="tertiary" icon="x" data-dismiss-toast aria-label="Tutup pemberitahuan" />
     </div>
+    @if(session('success'))<span class="toast-timer" aria-hidden="true"></span>@endif
 </div>
 @endif
 @if($errors->any())

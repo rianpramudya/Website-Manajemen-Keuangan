@@ -1,3 +1,4 @@
+import { transitionUpdate } from './transitions';
 export function registerBillTable(Alpine) {
     Alpine.data('billTable', (rows, date) => ({
         paymentDate: date,
@@ -25,12 +26,12 @@ export function registerBillTable(Alpine) {
     }));
 }
 export function initializeBillFilter() {
-    document.querySelector('[data-bill-filter]')?.addEventListener('change', event => {
+    document.querySelector('[data-bill-filter]')?.addEventListener('change', event => transitionUpdate(() => {
         let visible = 0;
         document.querySelectorAll('[data-bill-frequency]').forEach(card => {
             card.hidden = event.target.value !== 'all' && card.dataset.billFrequency !== event.target.value;
             if (!card.hidden) visible++;
         });
         document.querySelector('[data-bill-no-results]').hidden = visible > 0;
-    });
+    }, document.querySelector('[data-bill-frequency]')?.parentElement));
 }

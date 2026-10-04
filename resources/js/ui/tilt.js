@@ -4,13 +4,15 @@ export function initializeTilt() {
     const tokens = getComputedStyle(document.documentElement);
     const limit = Number(tokens.getPropertyValue('--tilt-limit'));
     const parallax = parseFloat(tokens.getPropertyValue('--tilt-parallax'));
+    const follow = Number(tokens.getPropertyValue('--tilt-follow'));
+    const stop = Number(tokens.getPropertyValue('--tilt-stop'));
     document.querySelectorAll('.pocket[href]').forEach(card => {
         let targetX = 0, targetY = 0, x = 0, y = 0;
         const render = () => {
-            x += (targetX - x) * .2; y += (targetY - y) * .2;
+            x += (targetX - x) * follow; y += (targetY - y) * follow;
             card.style.setProperty('--tilt-x', `${x}deg`); card.style.setProperty('--tilt-y', `${y}deg`);
             card.style.setProperty('--stitch-x', `${y / limit * parallax}px`); card.style.setProperty('--stitch-y', `${x / limit * parallax}px`);
-            if (Math.abs(targetX - x) + Math.abs(targetY - y) < .01) { if (!targetX && !targetY) card.classList.remove('tilt-active'); return false; }
+            if (Math.abs(targetX - x) + Math.abs(targetY - y) < stop) { if (!targetX && !targetY) card.classList.remove('tilt-active'); return false; }
             return true;
         };
         card.addEventListener('pointermove', event => {

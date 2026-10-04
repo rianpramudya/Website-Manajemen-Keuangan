@@ -40,3 +40,8 @@ initializeNavigation();
 
 import { initializeTilt } from './ui/tilt';
 initializeTilt();
+
+import { initializeTransitions } from './ui/transitions';
+import { initializeTabs } from './ui/tabs';
+initializeTransitions();
+initializeTabs();

@@ -271,6 +271,8 @@ Keputusan fun modern tahap 1: mobile-first dengan navigasi bawah lima tab dan sa
 
 Keputusan fun modern tahap 2: carousel snap hanya di mobile, grid kantong di tablet/desktop; dashboard bento dengan urutan baca transaksi terbaru sebelum formulir. Odometer menggunakan dua sel digit CSS tanpa mengubah nilai uang. Tilt dibatasi 4 derajat, memakai scheduler rAF bersama; sentuh memakai press.
 
+Keputusan fun modern tahap 3: View Transitions lintas dokumen memakai nama kantong unik dan indikator navigasi bersama; browser tanpa API tetap memakai navigasi/form normal. Tab detail pada desktop menunjukkan kedua panel, mobile berganti dengan keyboard dan crossfade. Toast berhenti saat hover/fokus, bottom sheet mendukung tarik serta tombol/Escape.
+
 ## 12. Fun modern pass
 
 Bagian ini menimpa aturan lama yang bertentangan.

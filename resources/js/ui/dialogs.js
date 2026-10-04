@@ -1,3 +1,4 @@
+import { scheduleFrame } from './frames';
 export function initializeDialogs() {
     const triggers = new WeakMap();
     const close = dialog => {
@@ -18,6 +19,12 @@ export function initializeDialogs() {
         if (event.target.closest('[data-dismiss-toast]')) event.target.closest('[data-toast]').remove();
     });
     document.querySelectorAll('dialog').forEach(dialog => {
+        const handle = dialog.querySelector('.dialog-handle');
+        let startY = null;
+        handle?.addEventListener('pointerdown', event => { if (!matchMedia('(max-width: 767px)').matches) return; startY = event.clientY; handle.setPointerCapture(event.pointerId); });
+        handle?.addEventListener('pointermove', event => { if (startY === null) return; const distance = Math.max(0, event.clientY - startY); dialog.style.transform = `translateY(${distance}px)`; });
+        handle?.addEventListener('pointerup', event => { if (startY === null) return; const distance = event.clientY - startY; startY = null; dialog.style.transform = ''; if (distance > parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--space-8'))) close(dialog); });
+        handle?.addEventListener('pointercancel', () => { startY = null; dialog.style.transform = ''; });
         dialog.addEventListener('close', () => triggers.get(dialog)?.focus());
         dialog.addEventListener('cancel', event => { event.preventDefault(); close(dialog); });
         dialog.addEventListener('keydown', event => {
@@ -44,5 +51,19 @@ export function initializeDialogs() {
         }
     } catch {}
     const lifetime = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--toast-life'));
-    document.querySelectorAll('[data-toast][data-success="true"]').forEach(toast => setTimeout(() => toast.remove(), lifetime));
+    document.querySelectorAll('[data-toast][data-success="true"]').forEach(toast => {
+        let remaining = lifetime, started = performance.now(), timer, paused = true;
+        const start = () => { if (!paused || toast.matches(':hover') || toast.contains(document.activeElement)) return; paused = false; started = performance.now(); toast.classList.remove('toast-paused'); timer = setTimeout(() => toast.remove(), remaining); };
+        const pause = () => { if (paused) return; paused = true; clearTimeout(timer); remaining -= performance.now() - started; toast.classList.add('toast-paused'); };
+        toast.addEventListener('pointerenter', pause); toast.addEventListener('pointerleave', start);
+        toast.addEventListener('focusin', pause); toast.addEventListener('focusout', start);
+        start();
+    });
+    const updateViewport = () => {
+        const keyboard = window.visualViewport ? Math.max(0, innerHeight - window.visualViewport.height - window.visualViewport.offsetTop) : 0;
+        document.documentElement.style.setProperty('--keyboard-offset', `${keyboard}px`);
+        document.body.classList.toggle('keyboard-open', keyboard > parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--nav-height')));
+        return false;
+    };
+    window.visualViewport?.addEventListener('resize', () => scheduleFrame(updateViewport));
 }
